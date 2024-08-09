@@ -23,7 +23,7 @@ else
   ON_ERROR=${ON_ERROR:-echo "FAILED"}
 fi
 
-BOT_DIR=/b
+BOT_DIR=/home/b
 QEMU_IMAGE_DIR=${BOT_DIR}/qemu_image
 SCRIPT_DIR=$(dirname $(readlink -f "$0"))
 FULL_HOSTNAME="$(hostname -f)"
@@ -209,7 +209,7 @@ else
 fi
 BOTS=$(echo "$BOTS" | tr ' ' '\n' | shuf)
 while true ; do
-  sleep 30
+  sleep $((30 + $RANDOM % 150))
   (
     # Try claim the same bot.
     for W in $BOTS ; do
